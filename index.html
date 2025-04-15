@@ -39,9 +39,9 @@
       <div style="display: flex; flex-direction: column; gap: 5px;">
         <button style="width: 100px; height: 100px; background-color: lightblue;" onclick="toggleWorksMenu()">作品集</button>
         <div id="worksMenu" style="display: none; flex-direction: column; gap: 5px;">
-          <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://jjiu888.github.io/20250303.4/')">作品1</button>
-          <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://jjiu888.github.io/20250317/')">作品2</button>
-          <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://jjiu888.github.io/20250324/')">作品3</button>
+          <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://cfchengit.github.io/20250225/')">作品1</button>
+          <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://jjiu888.github.io/20250304/')">作品2</button>
+          <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://jjiu888.github.io/20250325/')">作品3</button>
         </div>
         <div id="iframeContainer" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; border-radius: 10px;">
           <iframe id="iframeContent" style="width: 100%; height: 100%; border: none; background-color: transparent;"></iframe>
@@ -50,18 +50,17 @@
       </div>
       <button style="width: 100px; height: 100px; background-color: lightblue;" onclick="toggleNotesMenu()">筆記</button>
       <div id="notesMenu" style="display: none; flex-direction: column; gap: 5px;">
-        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/S1OyFSK51g')">第一周筆記</button>
-        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/rkMkIwWc1l')">第二周筆記</button>
-        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/S1fSMKGs1x')">第三周筆記</button>
-        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/rJXqNgr2Jg')">第四周筆記</button>
-        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/Sk5U4KP0yx')">期中作品筆記</button>
+        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/HJ4vtv-91l')">第一周筆記</button>
+        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/BJW0vcq5ye')">第二周筆記</button>
+        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/B1VSUCQskx')">第三周筆記</button>
+        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/HJZueKy6yg')">第四周筆記</button>
+        <button style="width: 100px; height: 50px; background-color: lightblue;" onclick="showIframe('https://hackmd.io/@jjjjiu/SyAfTeMA1x')">期中作品筆記</button>
       </div>
       <button style="width: 100px; height: 100px; background-color: lightblue;" onclick="startQuiz()">測驗</button>
       <button style="width: 100px; height: 100px; background-color: lightblue;" onclick="showVideo()">教學影片</button>
       <div id="videoContainer" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; border-radius: 10px;">
         <video id="teachingVideo" controls style="width: 100%; height: 100%; border-radius: 10px;">
-          <source src="https://cfchen58.synology.me/程式設計2024/B2/week6/20250324_093731.mp4" type="video/mp4">
-          您的瀏覽器不支援影片播放。
+          <source src="https://cfchen58.synology.me/%E4%BA%92%E5%8B%95%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/1132/week4/20250311_092236.mp4" type="video/mp4">
         </video>
         <button onclick="closeVideo()" style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">關閉</button>
       </div>
@@ -283,6 +282,22 @@
         updateHearts(canvas.width / 2); // 初始化愛心大小
       }
 
+      // 新增 closeQuiz 函數
+      function closeQuiz() {
+        const quizContainer = document.getElementById('quizContainer');
+        quizContainer.style.display = 'none';
+      }
+
+      // 新增全域事件監聽器，關閉所有視窗
+      document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('close-button')) {
+          const parentContainer = event.target.closest('div');
+          if (parentContainer) {
+            parentContainer.style.display = 'none';
+          }
+        }
+      });
+
       // 初始化畫布
       function setup() {
         createCanvas(windowWidth, windowHeight);
@@ -328,3 +343,4 @@
     </script>
   </body>
 </html>
+
